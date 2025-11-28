@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface MarterialRepository extends JpaRepository<Marterial, Long> {
-    Optional<Marterial> fetchMarterialByName(String s);
+    Optional<Marterial> findMarterialByName(String s);
 }

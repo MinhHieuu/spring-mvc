@@ -19,7 +19,7 @@ public class SizeService {
 
 
     public Size fecthSizeByName(String name) {
-        Optional<Size> size = this.sizeRepository.fetchSizeByName(name);
+        Optional<Size> size = this.sizeRepository.findSizeByName(name);
         if(size.isPresent()) {
             return size.get();
         }

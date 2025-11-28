@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Marterial</title>
+    <title>Size</title>
 </head>
 <body id="page-top">
 <div id="wrapper">
@@ -29,24 +29,24 @@
                 <table class="table">
                     <thead>
                     <th>STT</th>
-                    <th>Tên chất liệu</th>
+                    <th>Màu sắc</th>
                     <th>Thao tác</th>
                     </thead>
                     <tbody>
-                    <c:forEach var="marterial" items="${marterials}">
+                    <c:forEach var="color" items="${colors}">
                         <tr>
                             <td>${status.index + 1}</td>
-                            <td>${marterial.name}</td>
+                            <td>${color.name}</td>
                             <td>
                                 <button type="button"
                                         class="btn btn-warning btnEdit"
-                                        data-id="${marterial.id}"
-                                        data-name="${marterial.name}">
+                                        data-id="${color.id}"
+                                        data-name="${color.name}">
                                     Sửa
                                 </button>
                                 <button type="button"
                                         class="btn btn-danger"
-                                        data-id="${marterial.id}">
+                                        data-id="${color.id}">
                                     Xóa
                                 </button>
                             </td>
@@ -55,12 +55,12 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <form:form action="/admin/marterial/create" method="post" modelAttribute="newMarterial">
+                <form:form action="/admin/color/create" method="post" modelAttribute="newColor">
                     <div class="modal fade" id="addModal" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Thêm chất liệu</h5>
+                                    <h5 class="modal-title">Thêm màu sắc</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
 
@@ -68,7 +68,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Tên</label>
                                         <form:input path="name" type="text" class="form-control ${not empty message ? 'is-invalid' : ''}"
-                                                    placeholder="Nhập tên..."/>
+                                                    placeholder="Nhập màu sắc..."/>
                                         <c:if test="${not empty message}">
                                             <div class="alert alert-danger mt-1">${message}</div>
                                         </c:if>
@@ -87,15 +87,15 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Sửa chất liệu</h5>
+                                <h5 class="modal-title">Sửa màu sắc</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
-                            <form id="updateForm" action="/admin/marterial/update" method="post">
+                            <form id="updateForm" action="/admin/color/update" method="post">
                                 <div class="modal-body">
-                                    <input type="hidden" name="id" id="marterialId">
+                                    <input type="hidden" name="id" id="corlorId">
                                     <div class="mb-3">
-                                        <label class="form-label">Tên chất liệu</label>
-                                        <input type="text" name="name" id="marterialName" class="form-control">
+                                        <label class="form-label">Màu sắc</label>
+                                        <input type="text" name="name" id="sizeName" class="form-control">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -123,8 +123,8 @@
                 const name = this.getAttribute("data-name");
 
                 // Gán dữ liệu vào form modal
-                document.getElementById("marterialId").value = id;
-                document.getElementById("marterialName").value = name;
+                document.getElementById("colorId").value = id;
+                document.getElementById("colorName").value = name;
 
                 // Hiển thị modal
                 const modal = new bootstrap.Modal(document.getElementById("modalUpdate"));
@@ -137,8 +137,8 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         <c:if test="${not empty messageUpdate}">
-        document.getElementById("marterialId").value = "${editMarterial.id}";
-        document.getElementById("marterialName").value = "${editMarterial.name}";
+        document.getElementById("colorId").value = "${editColor.id}";
+        document.getElementById("colorName").value = "${editColor.name}";
         const modal = new bootstrap.Modal(document.getElementById("modalUpdate"));
         modal.show();
         </c:if>

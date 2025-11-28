@@ -22,7 +22,7 @@ public class MarterialService {
     }
 
     public Marterial fetchMarterialByName(String name) {
-        Optional<Marterial> marterial = this.marterialRepository.fetchMarterialByName(name);
+        Optional<Marterial> marterial = this.marterialRepository.findMarterialByName(name);
         if(marterial.isPresent()) {
             return marterial.get();
         }
