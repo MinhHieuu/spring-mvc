@@ -20,12 +20,9 @@ public class CategoryController {
         if (!model.containsAttribute("newCategory")) {
             model.addAttribute("newCategory", new Category());
         }
-//        if (!model.containsAttribute("editCategory")) {
-//            model.addAttribute("editCategory", new Category());
-//        }
 
         model.addAttribute("categories", categoryService.fetchCategory());
-        return "admin/product/category";
+        return "admin/field/category";
 
     }
 

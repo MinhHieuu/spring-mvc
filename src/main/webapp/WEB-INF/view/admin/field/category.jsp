@@ -102,7 +102,6 @@
                                 <div class="modal-body">
                                     <input type="hidden" name="id" id="categoryId">
 
-
                                     <div class="mb-3">
                                         <label class="form-label">Tên danh mục</label>
                                         <input type="text" name="name" id="categoryName" class="form-control ${not empty messageUpdate ? 'is-invalid' : ''}">

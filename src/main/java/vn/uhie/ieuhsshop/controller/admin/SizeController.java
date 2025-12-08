@@ -24,7 +24,7 @@ public class SizeController {
             model.addAttribute("newSize", new Size());
 
         }
-        return "admin/product/size";
+        return "admin/field/size";
     }
 
     @PostMapping("size/create")

@@ -1035,5 +1035,17 @@ form.user .btn-user {
 .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
     border-color: #bac8f3;
 }
-
-
+a.admin-control {
+    color: black;
+    text-decoration: none;
+}
+a.admin-control:hover {
+    color: blue;
+    text-decoration: underline;
+}
+.product-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+}

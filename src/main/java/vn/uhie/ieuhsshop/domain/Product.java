@@ -1,8 +1,12 @@
 package vn.uhie.ieuhsshop.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -10,22 +14,25 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "tên sản phẩm không được để trống")
+    @Size(max=100)
     private String name;
+    @NotNull(message = "phải chọn trạng thái")
     private Integer status;
     private String image;
     private LocalDate createdAt;
     private LocalDate updatedAt;
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User createdBy;
-    @ManyToOne
     @JoinColumn(name = "category_id")
+    @NotNull(message = "phải chọn danh mục cho sản phẩm")
     private Category category;
     @ManyToOne
     @JoinColumn(name = "brand_id")
+    @NotNull(message = "phải chọn thương hiệu")
     private Brand brand;
     @ManyToOne
     @JoinColumn(name = "marterial_id")
+    @NotNull(message = "phải chọn chất liệu")
     private Marterial marterial;
     @OneToMany(mappedBy = "product")
     private List<ProductDetail> productDetails;
@@ -76,14 +83,6 @@ public class Product {
 
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public User getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
     }
 
     public Category getCategory() {

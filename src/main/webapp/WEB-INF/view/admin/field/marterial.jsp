@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Size</title>
+    <title>Marterial</title>
 </head>
 <body id="page-top">
 <div id="wrapper">
@@ -29,24 +29,24 @@
                 <table class="table">
                     <thead>
                     <th>STT</th>
-                    <th>Kích thước</th>
+                    <th>Tên chất liệu</th>
                     <th>Thao tác</th>
                     </thead>
                     <tbody>
-                    <c:forEach var="size" items="${sizes}">
+                    <c:forEach var="marterial" items="${marterials}" varStatus="status">
                         <tr>
                             <td>${status.index + 1}</td>
-                            <td>${size.name}</td>
+                            <td>${marterial.name}</td>
                             <td>
                                 <button type="button"
                                         class="btn btn-warning btnEdit"
-                                        data-id="${size.id}"
-                                        data-name="${size.name}">
+                                        data-id="${marterial.id}"
+                                        data-name="${marterial.name}">
                                     Sửa
                                 </button>
                                 <button type="button"
                                         class="btn btn-danger"
-                                        data-id="${size.id}">
+                                        data-id="${marterial.id}">
                                     Xóa
                                 </button>
                             </td>
@@ -55,12 +55,12 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <form:form action="/admin/size/create" method="post" modelAttribute="newSize">
+                <form:form action="/admin/marterial/create" method="post" modelAttribute="newMarterial">
                     <div class="modal fade" id="addModal" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Thêm kích thước sản phẩm</h5>
+                                    <h5 class="modal-title">Thêm chất liệu</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
 
@@ -68,7 +68,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Tên</label>
                                         <form:input path="name" type="text" class="form-control ${not empty message ? 'is-invalid' : ''}"
-                                                    placeholder="Nhập kích thước..."/>
+                                                    placeholder="Nhập tên..."/>
                                         <c:if test="${not empty message}">
                                             <div class="alert alert-danger mt-1">${message}</div>
                                         </c:if>
@@ -87,15 +87,15 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Sửa kích thước</h5>
+                                <h5 class="modal-title">Sửa chất liệu</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
-                            <form id="updateForm" action="/admin/size/update" method="post">
+                            <form id="updateForm" action="/admin/marterial/update" method="post">
                                 <div class="modal-body">
-                                    <input type="hidden" name="id" id="sizeId">
+                                    <input type="hidden" name="id" id="marterialId">
                                     <div class="mb-3">
-                                        <label class="form-label">Kích thước</label>
-                                        <input type="text" name="name" id="sizeName" class="form-control">
+                                        <label class="form-label">Tên chất liệu</label>
+                                        <input type="text" name="name" id="marterialName" class="form-control">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -123,8 +123,8 @@
                 const name = this.getAttribute("data-name");
 
                 // Gán dữ liệu vào form modal
-                document.getElementById("sizeId").value = id;
-                document.getElementById("sizeName").value = name;
+                document.getElementById("marterialId").value = id;
+                document.getElementById("marterialName").value = name;
 
                 // Hiển thị modal
                 const modal = new bootstrap.Modal(document.getElementById("modalUpdate"));
@@ -137,8 +137,8 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         <c:if test="${not empty messageUpdate}">
-        document.getElementById("sizeId").value = "${editSize.id}";
-        document.getElementById("sizeName").value = "${editSize.name}";
+        document.getElementById("marterialId").value = "${editMarterial.id}";
+        document.getElementById("marterialName").value = "${editMarterial.name}";
         const modal = new bootstrap.Modal(document.getElementById("modalUpdate"));
         modal.show();
         </c:if>

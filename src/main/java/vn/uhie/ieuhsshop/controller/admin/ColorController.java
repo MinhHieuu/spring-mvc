@@ -24,7 +24,7 @@ public class ColorController {
             model.addAttribute("newColor", new Color());
 
         }
-        return "admin/product/color";
+        return "admin/field/color";
     }
 
     @PostMapping("color/create")

@@ -33,7 +33,7 @@
                     <th>Thao tác</th>
                     </thead>
                     <tbody>
-                    <c:forEach var="color" items="${colors}">
+                    <c:forEach var="color" items="${colors}" varStatus="status">
                         <tr>
                             <td>${status.index + 1}</td>
                             <td>${color.name}</td>
