@@ -67,4 +67,9 @@ public class UploadService {
         return false;
     }
 
+    public void deleteFiles(String[] files, String targetFolder) {
+        for(String file : files) {
+            deleteFile(file, targetFolder);
+        }
+    }
 }

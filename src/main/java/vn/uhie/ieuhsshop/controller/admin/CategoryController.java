@@ -22,7 +22,7 @@ public class CategoryController {
         }
 
         model.addAttribute("categories", categoryService.fetchCategory());
-        return "admin/field/category";
+        return "admin/product/category";
 
     }
 

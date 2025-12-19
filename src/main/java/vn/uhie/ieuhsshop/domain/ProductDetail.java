@@ -1,6 +1,9 @@
 package vn.uhie.ieuhsshop.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,19 +13,28 @@ public class ProductDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @DecimalMin(value = "0.1", message = "Giá nhập phải lớn hơn 0")
     private Double costPrice;
+    @NotNull
+    @DecimalMin(value = "0.1", message = "Giá bán phải lớn hơn 0")
     private Double salePrice;
+    @NotNull
+    @Min(value = 0, message = "số lượng phải lớn hơn 0")
     private Integer quantity;
     private String description;
     private LocalDate creaedAt;
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @NotNull
     private Product product;
     @ManyToOne
     @JoinColumn(name = "color_id")
+    @NotNull
     private Color color;
     @ManyToOne
     @JoinColumn(name = "size_id")
+    @NotNull
     private Size size;
     @OneToMany(mappedBy = "productDetail")
     private List<CartDetail> cartDetails;

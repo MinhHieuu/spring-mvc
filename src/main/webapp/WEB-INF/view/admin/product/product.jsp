@@ -51,7 +51,7 @@
                         <tr>
                             <td>${status.index + 1}</td>
                             <td><img src="/images/product/${product.image}" alt="image product"
-                                     class="product-image"></td>
+                                     class="product-image"/></td>
                             <td>${product.name}</td>
                             <td>${product.category.name}</td>
                             <td>${product.marterial.name}</td>
@@ -97,18 +97,14 @@
                                     <input type="hidden" name="id" id="id"/>
                                     <div class="mb-3 col-md-6 col-12">
                                         <label class="form-label">Tên sản phẩm</label>
-                                        <input name="name" id="name" type="text" placeholder="Nhập tên sản phẩm"
+                                        <input name="name" id="new-name" type="text" placeholder="Nhập tên sản phẩm"
                                                     class="form-control ${empty errorName? '' : 'is-invalid'}"/>
-
                                             <span class="invalid-feedback"> ${errorName}</span>
 
                                     </div>
                                     <div class="mb-3 col-md-6 col-12">
                                         <label class="form-label">Chọn danh mục</label>
-<%--                                        <c:set var="errorCategory">--%>
-<%--                                            <form:errors path="category" class="invalid-feedback"/>--%>
-<%--                                        </c:set>--%>
-                                        <select name="category" id="category" class="form-control">
+                                        <select name="category" id="new-category" class="form-control">
                                             <option value="" label="-Chọn danh mục-" disabled="true"></option>
                                             <c:forEach items="${listCategory}" var="c">
                                                 <option value="${c.id}"
@@ -116,28 +112,22 @@
                                                 >${c.name}</option>
                                             </c:forEach>
                                         </select>
-<%--                                            ${errorCategory}--%>
+
                                     </div>
                                     <div class="mb-3 col-md-6 col-12">
                                         <label class="form-label">Chọn chất liệu</label>
-<%--                                        <c:set var="errorMarterial">--%>
-<%--                                            <form:errors path="marterial" cssClass="invalid-feedback"/>--%>
-<%--                                        </c:set>--%>
-                                        <select name="marterial" id="marterial"
+                                        <select name="marterial" id="new-marterial"
                                                      class="form-control">
                                             <option value="" label="-Chọn chất liệu-" disabled="true"></option>
                                             <c:forEach items="${listMarterial}" var="m">
                                                 <option value="${m.id}" <c:if test="${marterial == m.id}">selected</c:if>>${m.name}</option>
                                             </c:forEach>
                                         </select>
-<%--                                            ${errorMarterial}--%>
                                     </div>
                                     <div class="mb-3 col-md-6 col-12">
                                         <label class="form-label">Chọn thương hiệu</label>
-<%--                                        <c:set var="errorBrand">--%>
-<%--                                            <form:errors path="brand" cssClass="invalid-feedback"/>--%>
-<%--                                        </c:set>--%>
-                                        <select name="brand" id="brand"
+
+                                        <select name="brand" id="new-brand"
                                                      class="form-control">
                                             <option value="" label="-Chọn thương hiệu-" disabled="true"></option>
                                             <c:forEach items="${listBrand}" var="b">
@@ -273,6 +263,7 @@
     </div>
         <jsp:include page="../layout/footer.jsp"/>
 </div>
+</div>
 <jsp:include page="../layout/scroll.jsp"/>
 
 </body>
@@ -319,10 +310,10 @@
             const status = "${product.status}";
 
             $("#id").val(id);
-            $("#name").val(name);
-            $("#category").val(category);
-            $("#brand").val(brand);
-            $("#marterial").val(marterial);
+            $("#new-name").val(name);
+            $("#new-category").val(category);
+            $("#new-brand").val(brand);
+            $("#new-marterial").val(marterial);
 
             $("#productUpdatePreview").attr("src", img)
             // Gán trạng thái vào radio
@@ -349,10 +340,10 @@
             const status = $(this).data("status");
 
             $("#id").val(id);
-            $("#name").val(name);
-            $("#category").val(category);
-            $("#brand").val(brand);
-            $("#marterial").val(marterial);
+            $("#new-name").val(name);
+            $("#new-category").val(category);
+            $("#new-brand").val(brand);
+            $("#new-marterial").val(marterial);
 
             $("#productUpdatePreview").attr("src", img)
             // Gán trạng thái vào radio
@@ -366,4 +357,5 @@
         });
     });
 </script>
+
 </html>

@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.uhie.ieuhsshop.domain.Brand;
 import vn.uhie.ieuhsshop.domain.Category;
 import vn.uhie.ieuhsshop.domain.Marterial;
@@ -65,22 +66,34 @@ public class ProductController {
 //    }
     @PostMapping("product/create")
     public String handleCreateProduct(@ModelAttribute("newProduct") @Valid Product product,
-                                BindingResult bindingResult, @RequestParam("imgFile")MultipartFile file,
-                                      Model model) {
+                                      BindingResult bindingResult, @RequestParam("imgFile")MultipartFile file,
+                                      RedirectAttributes redirectAttributes, Model model) {
         List<FieldError> errors = bindingResult.getFieldErrors();
         for(FieldError error : errors) {
             System.out.println("----" + error.getField() + "-----" + error.getDefaultMessage());
+            System.out.println(error.getObjectName());
         }
         if(bindingResult.hasErrors()) {
             model.addAttribute("products", this.productService.fetchProduct());
             model.addAttribute("messageError", "Create");
             return "admin/product/product";
         }
+//        if(this.productService.fetchProductByName(product.getName())) {
+//            model.addAttribute("errorName", "Tên sản phẩm đã tồn tại");
+//            return "admin/product/product";
+//        }
+        if(this.productService.checkProductExisted(product)) {
+            model.addAttribute("message", "sản phẩm đã tồn tại");
+            model.addAttribute("messageType", "fail");
+            model.addAttribute("products", this.productService.fetchProduct());
+            return "admin/product/product";
+        }
+
         product.setCreatedAt(LocalDate.now());
         product.setImage(this.uploadService.handleSaveUploadFile(file, "product"));
         this.productService.handleSaveProduct(product);
-        model.addAttribute("message", "Thêm thành công");
-        model.addAttribute("messageType", "success");
+        redirectAttributes.addFlashAttribute("message", "Thêm thành công");
+        redirectAttributes.addFlashAttribute("messageType", "success");
         return "redirect:/admin/product";
     }
 
@@ -95,7 +108,7 @@ public class ProductController {
     @PostMapping("product/update")
     public String handleUpdateProduct(@ModelAttribute @Valid Product newProduct, BindingResult bindingResult,
                                       @RequestParam("imgFile")MultipartFile file,
-                                      Model model) {
+                                      Model model, RedirectAttributes redirectAttributes) {
         Product product = this.productService.fetchProductById(newProduct.getId());
         List<FieldError> errors = bindingResult.getFieldErrors();
         for(FieldError error : errors) {
@@ -128,6 +141,8 @@ public class ProductController {
         }
         product.setStatus(newProduct.getStatus());
         this.productService.handleSaveProduct(product);
+        redirectAttributes.addFlashAttribute("message", "Sửa thành công");
+        redirectAttributes.addFlashAttribute("messageType", "success");
         return "redirect:/admin/product";
     }
 }

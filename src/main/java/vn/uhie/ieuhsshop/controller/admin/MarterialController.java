@@ -23,7 +23,7 @@ public class MarterialController {
             model.addAttribute("newMarterial", new Marterial());
 
         }
-        return "admin/field/marterial";
+        return "admin/product/marterial";
     }
 
     @PostMapping("marterial/create")

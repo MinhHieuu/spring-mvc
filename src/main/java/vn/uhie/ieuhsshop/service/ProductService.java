@@ -26,4 +26,25 @@ public class ProductService {
         }
         return null;
     }
+
+    public boolean checkProductExisted(Product product) {
+        Optional<Product> product1 =
+                this.productRepository.getProductByNameAndBrandAndCategoryAndMarterial(
+                        product.getName(),
+                        product.getBrand(),
+                        product.getCategory(),
+                        product.getMarterial());
+        if(product1.isPresent()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean fetchProductByName(String name) {
+        Optional<Product> product = this.productRepository.getProductByName(name);
+        if(product.isPresent()) {
+            return true;
+        }
+        return false;
+    }
 }

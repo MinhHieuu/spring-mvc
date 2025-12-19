@@ -1049,3 +1049,18 @@ a.admin-control:hover {
     border-radius: 5px;
     object-fit: cover;
 }
+#previewContainer, #preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+
+}
+
+#previewContainer img, #preview img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /*object-fit: cover; !* giữ tỷ lệ ảnh đẹp *!*/
+}

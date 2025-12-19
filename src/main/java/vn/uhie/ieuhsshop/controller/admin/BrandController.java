@@ -24,7 +24,7 @@ public class BrandController {
             model.addAttribute("newBrand", new Brand());
         }
         model.addAttribute("brands", this.brandService.fecthAllBrand());
-        return "admin/field/brand";
+        return "admin/product/brand";
     }
 
     @PostMapping("brand/create")
