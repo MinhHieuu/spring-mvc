@@ -1,5 +1,6 @@
 package vn.uhie.ieuhsshop.controller.admin;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,10 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import vn.uhie.ieuhsshop.domain.Role;
+import vn.uhie.ieuhsshop.service.RoleService;
 
 @Controller
 @RequestMapping("/admin")
 public class RoleController {
+    @Autowired
+    private RoleService roleService;
     @GetMapping("roles")
     public String getPage(Model model){
         model.addAttribute("newRole", new Role());
@@ -20,6 +24,7 @@ public class RoleController {
     @PostMapping("roles")
     public String createRoles(@ModelAttribute("newRole") Role role){
         System.out.println(role.toString());
+        this.roleService.handleSaveRole(role);
         return "/admin/role";
 
     }
