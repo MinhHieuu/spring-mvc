@@ -41,17 +41,17 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
-                                <form class="user">
+                                <form class="user" method="post" action="/login">
                                     <div class="mb-3">
-                                        <input type="email" class="form-control form-control-user"
-                                               id="exampleInputEmail" aria-describedby="emailHelp"
-                                               placeholder="Enter Email Address...">
-
+                                        <input type="text" class="form-control form-control-user"
+                                               id="exampleInputEmail" aria-describedby="emailHelp" name="username"
+                                               placeholder="Enter Username...">
                                     </div>
                                     <div class="mb-3">
                                         <input type="password" class="form-control form-control-user"
-                                               id="exampleInputPassword" placeholder="Password">
+                                               id="exampleInputPassword" placeholder="Password" name="password">
                                     </div>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                     <div class="mb-3">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -59,9 +59,9 @@
                                                 Me</label>
                                         </div>
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block mb-2">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block mb-2">
                                         Login
-                                    </a>
+                                    </button>
                                     <hr>
                                     <a href="index.html" class="btn btn-google btn-user btn-block mb-2">
                                         <i class="fab fa-google fa-fw"></i> Login with Google

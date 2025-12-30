@@ -5,6 +5,7 @@ import vn.uhie.ieuhsshop.domain.User;
 import vn.uhie.ieuhsshop.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -18,5 +19,12 @@ public class UserService {
     }
     public List<User> fetchUser() {
         return this.userRepository.findAll();
+    }
+    public User getUserByUserName(String username) {
+        Optional<User> user = this.userRepository.findByUsername(username);
+        if(user.isPresent()) {
+            return user.get();
+        }
+        return null;
     }
 }
