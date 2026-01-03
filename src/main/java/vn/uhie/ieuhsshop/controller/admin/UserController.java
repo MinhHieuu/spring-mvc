@@ -57,7 +57,7 @@ public class UserController {
         user.setAvatar(avatar);
         String password = this.passwordEncoder.encode(user.getPassword());
         user.setPassword(password);
-        this.userService.handleSaveUser(user);
+//        this.userService.handleSaveUser(user);
         return "redirect:/admin/user";
     }
 }

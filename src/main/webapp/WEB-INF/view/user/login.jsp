@@ -73,10 +73,10 @@
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" style="text-decoration: none" href="forgot-password.html">Forgot Password?</a>
+                                    <a class="small" style="text-decoration: none" href="#">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" style="text-decoration: none" href="register.html">Create an Account!</a>
+                                    <a class="small" style="text-decoration: none" href="/register">Create an Account!</a>
                                 </div>
                             </div>
                         </div>

@@ -62,28 +62,23 @@
                                            id="exampleRepeatPassword" placeholder="Repeat Password">
                                 </div>
                             </div>
-                            <a href="login.html" class="btn btn-primary btn-user btn-block">
+                            <a href="login.html" class="btn btn-primary btn-user btn-block mb-2">
                                 Register Account
                             </a>
-                            <a href="index.html" class="btn btn-google btn-user btn-block">
+                            <a href="index.html" class="btn btn-google btn-user btn-block mb-2">
                                 <i class="fab fa-google fa-fw"></i> Register with Google
                             </a>
                             <a href="index.html" class="btn btn-facebook btn-user btn-block mb-2">
                                 <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                             </a>
-                            <a href="index.html" class="btn btn-google btn-user btn-block mb-2">
-                                <i class="fab fa-google fa-fw"></i> Register with Google
-                            </a>
-                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                            </a>
+
                         </form>
                         <hr>
                         <div class="text-center">
                             <a class="small" style="text-decoration: none" href="forgot-password.html">Forgot Password?</a>
                         </div>
                         <div class="text-center">
-                            <a class="small" style="text-decoration: none" href="login.html">Already have an account? Login!</a>
+                            <a class="small" style="text-decoration: none" href="/login">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>
